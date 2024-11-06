@@ -1,0 +1,41 @@
+
+# Image files 
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.bmp binary
+*.tga binary
+*.exr binary
+*.hdr binary
+
+# Audio files *.wav binary
+*.mp3 binary
+*.ogg binary
+*.flac binary
+*.opus binary
+
+# Video files 
+*.mp4 binary
+*.ogv binary
+*.webm binary
+
+# Godot-specific files
+import.cfg text eol=lf  
+*.import binary        
+
+# 3D Models (binary)
+*.dae binary
+*.obj binary
+*.fbx binary
+*.gltf binary
+*.glb binary
+*.stl binary
+
+# Fonts (binary)
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+
+# Lock files to avoid merging conflicts
+export_presets.cfg lockable
