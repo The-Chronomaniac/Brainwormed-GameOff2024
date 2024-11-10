@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0f2ck5xfhgok"]
+
+[ext_resource type="Texture2D" uid="uid://xwos27wxredw" path="res://Sprites/Test Sprites/basicworm.png" id="1_cyf15"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwcih"]
+atlas = ExtResource("1_cyf15")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ptb3"]
+atlas = ExtResource("1_cyf15")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjpug"]
+atlas = ExtResource("1_cyf15")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l3lm"]
+atlas = ExtResource("1_cyf15")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpuyk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwcih")
+}],
+"loop": true,
+"name": &"Bend",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ptb3")
+}],
+"loop": true,
+"name": &"Head",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjpug")
+}],
+"loop": true,
+"name": &"Segment",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l3lm")
+}],
+"loop": true,
+"name": &"Tail",
+"speed": 5.0
+}]
+
+[node name="Snake" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_hpuyk")
+animation = &"Head"
