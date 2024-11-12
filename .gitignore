@@ -6,6 +6,10 @@
 export.cfg
 export_presets.cfg
 
+# This file seems pointless to track
+.editor/
+script_editor_cache.cfg
+
 # Imported translations (automatically generated from CSV files)
 *.translation
 

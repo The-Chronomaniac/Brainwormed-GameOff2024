@@ -1,28 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0f2ck5xfhgok"]
+[gd_scene load_steps=7 format=3 uid="uid://b43krwdspvf7p"]
 
-[ext_resource type="Texture2D" uid="uid://xwos27wxredw" path="res://Sprites/Test Sprites/basicworm.png" id="1_cyf15"]
+[ext_resource type="Texture2D" uid="uid://dek5inomikle2" path="res://Sprites/Test Sprites/basicworm-export.png" id="1_u4xv0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwcih"]
-atlas = ExtResource("1_cyf15")
-region = Rect2(96, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka67p"]
+atlas = ExtResource("1_u4xv0")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ptb3"]
-atlas = ExtResource("1_cyf15")
-region = Rect2(0, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_24ehx"]
+atlas = ExtResource("1_u4xv0")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vjpug"]
-atlas = ExtResource("1_cyf15")
-region = Rect2(48, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3j2t"]
+atlas = ExtResource("1_u4xv0")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8l3lm"]
-atlas = ExtResource("1_cyf15")
-region = Rect2(144, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_06f4t"]
+atlas = ExtResource("1_u4xv0")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hpuyk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dwcih")
+"texture": SubResource("AtlasTexture_ka67p")
 }],
 "loop": true,
 "name": &"Bend",
@@ -30,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ptb3")
+"texture": SubResource("AtlasTexture_24ehx")
 }],
 "loop": true,
 "name": &"Head",
@@ -38,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vjpug")
+"texture": SubResource("AtlasTexture_r3j2t")
 }],
 "loop": true,
 "name": &"Segment",
@@ -46,7 +46,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8l3lm")
+"texture": SubResource("AtlasTexture_06f4t")
 }],
 "loop": true,
 "name": &"Tail",
@@ -54,5 +54,9 @@ animations = [{
 }]
 
 [node name="Snake" type="AnimatedSprite2D"]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hpuyk")
 animation = &"Head"
+centered = false
+
+[node name="Node" type="Node" parent="."]

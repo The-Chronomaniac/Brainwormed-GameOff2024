@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1bihp48ag0uj"]
+
+[ext_resource type="Script" path="res://Letter/Letter.gd" id="1_7xha8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwwvc"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83m5x"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 6.0
+bg_color = Color(0.728822, 0.728822, 0.728822, 1)
+border_width_bottom = 6
+border_color = Color(0.554954, 0.554954, 0.554953, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Letter" type="Node2D"]
+script = ExtResource("1_7xha8")
+
+[node name="Shadow" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.25098)
+y_sort_enabled = true
+
+[node name="Graphic" type="Panel" parent="Shadow"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hwwvc")
+
+[node name="Block" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Graphic" type="PanelContainer" parent="Block"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_83m5x")
+
+[node name="Letter" type="Label" parent="Block/Graphic"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.912289, 0.912289, 0.912289, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
