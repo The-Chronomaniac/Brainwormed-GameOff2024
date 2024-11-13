@@ -36,7 +36,7 @@ func move():
 		for i in range(snake.size()):
 			var current = snake[i]
 			if current.segment_name == "Head":
-				move_timer.wait_time = .05 if safe_zone_check() else .15
+				move_timer.wait_time = .03  if safe_zone_check() else .15
 				previous_direction = current.move_dir
 				current.move_dir = move_direction
 				current.global_position += Vector2(Level.cell_size, Level.cell_size) * current.move_dir
@@ -88,14 +88,14 @@ func safe_zone_check()-> bool:
 	elif x == 27 and y != 13:
 		move_direction = down
 		return true
-	elif y == 13 and x != 14 and x!= 0:
-		move_direction = left
-		return true
 	elif x == 0 and y != 0:
 		move_direction = up
 		return true
 	elif y == 13 and x == 14 and move_direction != down:
 		move_direction = up
+		return true
+	elif y == 13 and x!= 0:
+		move_direction = left
 		return true
 	else:
 		return false
