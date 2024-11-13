@@ -10,4 +10,4 @@ msnake = ExtResource("2_53y2t")
 move_timer = NodePath("DelayTime")
 
 [node name="DelayTime" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.15

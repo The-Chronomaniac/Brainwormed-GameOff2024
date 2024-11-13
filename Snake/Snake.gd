@@ -11,16 +11,16 @@ var snake: Array
 @export var move_timer : Timer
 var previous_direction: Vector2
 var minisnake
+const grid_offset = Vector2(64,64)
 
 func spawn_snake(x_pos, y_pos, segment_name, movedir):
 	minisnake = msnake.instantiate()
-	#await get_tree().process_frame
 	get_tree().current_scene.add_child(minisnake)
-	minisnake.global_position = Vector2(Level.cell_size * x_pos, Level.cell_size * y_pos)
+	minisnake.global_position = Vector2(Level.cell_size * x_pos, Level.cell_size * y_pos) + grid_offset
 	minisnake.play(segment_name)
 	can_move = true
 	minisnake.move_dir = movedir
-	Level.data[x_pos][y_pos] = minisnake
+	Level.data[y_pos][x_pos] = minisnake
 	snake.append(minisnake)
 	minisnake.x_pos = x_pos
 	minisnake.y_pos = y_pos
@@ -32,23 +32,26 @@ func spawn_letter_segment():
 	
 func move():
 	if can_move:
+		
 		for i in range(snake.size()):
 			var current = snake[i]
 			if current.segment_name == "Head":
+				move_timer.wait_time = .05 if safe_zone_check() else .15
 				previous_direction = current.move_dir
 				current.move_dir = move_direction
 				current.global_position += Vector2(Level.cell_size, Level.cell_size) * current.move_dir
-				Level.data[current.x_pos][current.y_pos] = 0
+				Level.data[current.y_pos][current.x_pos] = 0
 				current.x_pos += current.move_dir.x
 				current.y_pos += current.move_dir.y
-				Level.data[current.x_pos][current.y_pos] = current
+				Level.data[current.y_pos][current.x_pos] = current
+				print("X" + str(snake[0].x_pos) + " Y:" + str(snake[0].y_pos))
 			else:
 				current.move_dir = previous_direction
 				current.global_position += Vector2(Level.cell_size, Level.cell_size) * current.move_dir
-				Level.data[current.x_pos][current.y_pos] = 0
+				Level.data[current.y_pos][current.x_pos] = 0
 				current.x_pos += current.move_dir.x
 				current.y_pos += current.move_dir.y
-				Level.data[current.x_pos][current.y_pos] = current
+				Level.data[current.y_pos][current.x_pos] = current
 				previous_direction = current.move_dir
 				
 				
@@ -75,3 +78,24 @@ func initialize_snake():
 	move_timer.timeout.connect(on_timer_out)
 	move_timer.start()
 	
+func safe_zone_check()-> bool:
+	var current = snake[0]
+	var x = current.x_pos
+	var y = current.y_pos
+	if y == 0 and x != 27:
+		move_direction = right
+		return true
+	elif x == 27 and y != 13:
+		move_direction = down
+		return true
+	elif y == 13 and x != 14 and x!= 0:
+		move_direction = left
+		return true
+	elif x == 0 and y != 0:
+		move_direction = up
+		return true
+	elif y == 13 and x == 14 and move_direction != down:
+		move_direction = up
+		return true
+	else:
+		return false

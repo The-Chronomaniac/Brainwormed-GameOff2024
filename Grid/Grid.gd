@@ -71,6 +71,7 @@ func _spawn_letter(letter):
 	new_letter.set_value(letter)
 	Level.data[y_position][x_position] = new_letter
 	print(Level.data[y_position][x_position])
+	
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
