@@ -4,3 +4,4 @@ var segment_name
 var move_dir
 var x_pos
 var y_pos
+var is_snake_segment = false

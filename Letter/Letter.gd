@@ -8,6 +8,10 @@ var alphabet : Array = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', '
 @onready var block : Node2D = $Block
 @onready var block_panel : PanelContainer = $Block/Graphic
 @onready var label : Label = $Block/Graphic/Letter
+var is_snake_segment = false
+var move_dir
+var x_pos
+var y_pos
 
 var value : String = ""
 
