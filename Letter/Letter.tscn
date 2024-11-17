@@ -24,7 +24,7 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[node name="Letter" type="Node2D"]
+[node name="Letter" type="Node2D" groups=["Letter"]]
 script = ExtResource("1_7xha8")
 
 [node name="Shadow" type="Node2D" parent="."]

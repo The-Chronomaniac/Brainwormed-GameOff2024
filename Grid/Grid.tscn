@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyhukmk261lvj"]
+[gd_scene load_steps=6 format=3 uid="uid://cyhukmk261lvj"]
 
 [ext_resource type="Script" path="res://Grid/Grid.gd" id="1_538ot"]
+[ext_resource type="PackedScene" uid="uid://d0ciu782egddw" path="res://Snake/Snake.tscn" id="2_qwt2o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yuc4"]
-bg_color = Color(0.178212, 0.178212, 0.178212, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4grh"]
-bg_color = Color(0.294028, 0.294028, 0.294028, 1)
+bg_color = Color(1, 1, 1, 1)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
@@ -24,12 +25,13 @@ corner_radius_bottom_left = 16
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4fpo"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Grid" type="Control"]
+[node name="Grid" type="Control" groups=["Grid"]]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_538ot")
+snake_scene = ExtResource("2_qwt2o")
 
 [node name="BottomPanel" type="Panel" parent="."]
 layout_mode = 2
