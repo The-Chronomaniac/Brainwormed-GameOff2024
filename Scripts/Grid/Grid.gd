@@ -4,12 +4,10 @@ extends Control
 @onready var safe_panel : Panel = $SafeZone
 @onready var line : Line2D = $Line2D
 @onready var bottom_panel : Panel = $BottomPanel
-@export var snake : Resource
 
-var cursnake
 var line_list : Array = []
 
-var letter_scene = preload("res://Letter/Letter.tscn")
+var letter_scene = preload("res://Scripts/Letter/Letter.tscn")
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -37,12 +35,7 @@ func _ready() -> void:
 			new_line.position = safe_panel.position
 			new_line.points = [Vector2(0, Level.cell_size * y), Vector2(Level.grid_size.x * Level.cell_size, Level.cell_size * y)]
 			add_child(new_line)
-	#Spawn Snake
-	cursnake = snake.instantiate()
-	await get_tree().process_frame
-	get_tree().current_scene.add_child(cursnake)
-	cursnake.initialize_snake()
-
+	
 	# Spawn some letters
 	var generate_a_word = RandomLetters.generate_random_letters(3)
 	for letter in generate_a_word.split():
@@ -58,7 +51,7 @@ func _spawn_letter(letter):
 	var x_position : int = randi_range(safe_margin, Level.grid_size.x - 1 - safe_margin)
 	var y_position : int = randi_range(safe_margin, Level.grid_size.y - 1 - safe_margin)
 	# If the level space is empty, spawn it
-	if not Level.data[y_position][x_position] == 0 : # ZERO is consider
+	if not Level.data[y_position][x_position] == 0: # ZERO is consider
 		_spawn_letter(letter) # Try again if not
 		return
 	# Store the new data
@@ -70,11 +63,7 @@ func _spawn_letter(letter):
 	new_letter.global_position = safe_panel.global_position + Vector2(Level.cell_size * x_position, Level.cell_size * y_position) + Vector2(Level.cell_size * 0.5, Level.cell_size * 0.5)
 	new_letter.set_value(letter)
 	Level.data[y_position][x_position] = new_letter
-	print(Level.data[y_position][x_position])
-	
 
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	cursnake.move()
-	cursnake.inputs()
+	pass
