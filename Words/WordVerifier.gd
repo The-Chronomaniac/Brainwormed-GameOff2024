@@ -13,11 +13,12 @@ func _verify_word(my_word):
 	var index : int = clamp(my_word.length() - 1, 0, 4) # Start at 0 index 
 	var found_word_index = word_list[index].bsearch(my_word.to_upper(), false)
 	var found_word = word_list[index][found_word_index - 1] == my_word.to_upper()
-	print(my_word + " | Real word: " + str(found_word))
+	#print(my_word + " | Real word: " + str(found_word))
 	return found_word
 
 func _ready() -> void:
-	print("hi")
+	return
+	# Word verifying tests
 	_verify_word("b")
 	_verify_word("hi")
 	_verify_word("cat")

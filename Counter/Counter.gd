@@ -14,6 +14,8 @@ func set_value(value : int = 0):
 		label.modulate.a = 0.2
 		label.text = "0"
 		return
+	if value == 0:
+		label.modulate.a = 1.0
 	target_number = value
 	set_physics_process(true)
 
