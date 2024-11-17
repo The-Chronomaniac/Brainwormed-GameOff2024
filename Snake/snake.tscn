@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0ciu782egddw"]
+[gd_scene load_steps=3 format=3 uid="uid://d0ciu782egddw"]
 
 [ext_resource type="Script" path="res://Snake/Snake.gd" id="1_upbrh"]
+[ext_resource type="PackedScene" uid="uid://2gvf8prek3wn" path="res://Snake/Mini Snake/mini_snake.tscn" id="2_53y2t"]
 
-[node name="Snake" type="Node2D"]
+[node name="Snake" type="Node2D" node_paths=PackedStringArray("move_timer")]
 top_level = true
 script = ExtResource("1_upbrh")
+msnake = ExtResource("2_53y2t")
+move_timer = NodePath("DelayTime")
 
 [node name="DelayTime" type="Timer" parent="."]
 wait_time = 0.15
