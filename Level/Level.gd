@@ -1,10 +1,13 @@
 extends Node
 
 signal scoreboard_update(value)
+signal letter_spawn(number_of_letters)
+signal current_word(value)
 
 # Where we store where the letters go
 var cell_size : int = 64
-var grid_size : Vector2i = Vector2i(28, 14)
+var grid_size : Vector2i = Vector2i(22, 12)
+var board_position : Vector2 = Vector2.ZERO
 
 # Map data
 var data : Array = []
@@ -15,28 +18,17 @@ var scoreboard : int = 0
 var difficulty_level : int = 0
 var number_of_letters : int = 1
 
+var exit_position : Vector2 = Vector2.ZERO
+
 func _ready() -> void:
 	# Create map data
 	for y in range(grid_size.y):
-		data.push_back(0) # Add field
+		data.push_back(null) # Add field
 		data[y] = []
 		data[y].resize(grid_size.x)
-		data[y].fill(0)
-
-func _update_difficulty():
-	# Updating the difficulty level increases the amount of letters on the board
-	if difficulty_level == 0:
-		number_of_letters = 1
-	if difficulty_level > 0:
-		number_of_letters = 2
-	if difficulty_level > 3:
-		number_of_letters = 3
-	if difficulty_level > 6:
-		number_of_letters = 4
-	if difficulty_level > 9:
-		number_of_letters = 5
-	difficulty_level += 1
-
+		data[y].fill(null)
+	# Set the exit cell
+	exit_position = Vector2(1, Level.grid_size.y - 1)
 
 func update_scoreboard(value):
 	scoreboard += value

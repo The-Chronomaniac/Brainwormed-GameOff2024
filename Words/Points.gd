@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var alphabet : Array = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
@@ -10,10 +10,7 @@ var high_frequency_letter_weights : Dictionary = {
 	"y": 0.01974, "z": 0.00074
 }
 
-func _ready() -> void:
-	var word = "Zonke"
-	await get_tree().process_frame
-	Level.update_scoreboard(_calculate_word_points(word))
+var words_used : Array = []
 
 func _calculate_letter_points(letter):
 	var letter_value : float = high_frequency_letter_weights[letter.to_lower()]
@@ -23,10 +20,26 @@ func _calculate_letter_points(letter):
 	return (ceil(points * 0.005) * 50) * 0.1
 
 func _calculate_word_points(word):
+	print("-------------------")
+	print("Checking word : " + str(word))
+	var real_word : bool = WordVerifier._verify_word(word)
 	var points : int = 0
 	var word_array : Array = word.split()
-	for letter in word_array:
-		points += _calculate_letter_points(letter)
-	
-	print(word + " : " + str(points) + "!!")
-	return points * (word_array.size() * 10)
+	# Only gain letters if it is a real word
+	var new_word = false
+	if real_word:
+		var word_index = words_used.find(word)
+		new_word = word_index == -1 # Check if it exists
+		if new_word:
+			print("Found a new word!")
+			words_used.push_back(word)
+		else:
+			print("You used this word before")
+		# Calculate the points for each letter
+		for letter in word_array:
+			points += _calculate_letter_points(letter)
+	# Multiply the result higher if it is a new word
+	var multiplier = 10 if new_word else 1
+	var final_points = points * (word_array.size() * multiplier)
+	print("Number of points " + str(final_points) + "!!")
+	return final_points
