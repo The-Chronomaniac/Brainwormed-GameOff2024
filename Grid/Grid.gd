@@ -67,6 +67,8 @@ func _spawn_letter(letter):
 	var new_letter = letter_scene.instantiate()
 	await get_tree().process_frame
 	get_tree().current_scene.add_child(new_letter)
+	new_letter.x_pos = x_position
+	new_letter.y_pos = y_position
 	new_letter.global_position = safe_panel.global_position + Vector2(Level.cell_size * x_position, Level.cell_size * y_position) + Vector2(Level.cell_size * 0.5, Level.cell_size * 0.5)
 	new_letter.set_value(letter)
 	Level.data[y_position][x_position] = new_letter

@@ -1,9 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://dd1jvq4oxls31"]
 
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://cyhukmk261lvj" path="res://Scripts/Grid/Grid.tscn" id="1_d7qj8"]
 [ext_resource type="PackedScene" uid="uid://bidsxlq5mmpnq" path="res://Scripts/Counter/Scoreboard/Scoreboard.tscn" id="2_i5jfd"]
 [ext_resource type="PackedScene" uid="uid://d0ciu782egddw" path="res://Snake/snake.tscn" id="2_w3e0v"]
 [ext_resource type="PackedScene" uid="uid://2v2ay5e081al" path="res://Scripts/Points/Points.tscn" id="3_86rtn"]
+=======
+[ext_resource type="PackedScene" uid="uid://cyhukmk261lvj" path="res://Grid/Grid.tscn" id="1_d7qj8"]
+[ext_resource type="PackedScene" uid="uid://bidsxlq5mmpnq" path="res://Counter/Scoreboard/Scoreboard.tscn" id="2_i5jfd"]
+[ext_resource type="PackedScene" uid="uid://d0ciu782egddw" path="res://Snake/snake.tscn" id="2_w3e0v"]
+[ext_resource type="PackedScene" uid="uid://2v2ay5e081al" path="res://Points/Points.tscn" id="3_86rtn"]
+<<<<<<< HEAD
+>>>>>>> parent of afc8a86 (Working Prototype)
+=======
+>>>>>>> parent of afc8a86 (Working Prototype)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_led2y"]
 content_margin_left = 40.0

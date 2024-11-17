@@ -4,3 +4,11 @@ var segment_name
 var move_dir
 var x_pos
 var y_pos
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+var is_snake_segment = false
+>>>>>>> parent of afc8a86 (Working Prototype)
+=======
+var is_snake_segment = false
+>>>>>>> parent of afc8a86 (Working Prototype)
