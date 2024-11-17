@@ -9,19 +9,6 @@ var alphabet : Array = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', '
 @onready var block : Node2D = $Block
 @onready var block_panel : PanelContainer = $Block/Graphic
 @onready var label : Label = $Block/Graphic/Letter
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of afc8a86 (Working Prototype)
-var is_snake_segment = false
-var move_dir
-var x_pos
-var y_pos
-<<<<<<< HEAD
->>>>>>> parent of afc8a86 (Working Prototype)
-=======
->>>>>>> parent of afc8a86 (Working Prototype)
 
 var is_snake_segment = false
 
