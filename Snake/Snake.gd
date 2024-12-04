@@ -16,13 +16,13 @@ var snake_segment_position : Array # Where we store the snakes segments position
 var snake_letter_index : int = 1 # Where to place the next letter
 var current_word : String = ""
 
-var letter_scene : PackedScene = load("res://Letter/Letter.tscn")
+@export var letter_scene : PackedScene
 @onready var move_timer : Timer = $DelayTime
 
-var snake_head : Letter
-var snake_head_default_scale : float = 1.3
-var snake_tail : Letter
-var snake_tail_default_scale : float = 0.75
+var snake_head : Letter2
+var snake_head_default_scale : float = 1
+var snake_tail : Letter2
+var snake_tail_default_scale : float = 1
 
 var normal_speed : float = 0.3
 var fast_speed : float = 0.1
@@ -121,14 +121,11 @@ func initialize_snake():
 	var spawn_position : Vector2i = Level.exit_position
 	# Snake head
 	snake_head = spawn_snake(spawn_position.x, spawn_position.y - 1)	
-	snake_head.scale = Vector2(snake_head_default_scale, snake_head_default_scale)
 	snake_head.z_index = 10 # Always on top
-	snake_head.modulate = Color("Yellow")
-	snake_head.set_value("..")
-	# Snake tale
+	# Snake tail
+	snake_head.segmentsprite.play("snakehead")
 	snake_tail = spawn_snake(spawn_position.x - 1, spawn_position.y)
-	snake_tail.scale = Vector2(snake_tail_default_scale, snake_tail_default_scale)
-	snake_tail.modulate = Color("Yellow").darkened(0.2)
+	snake_tail.segmentsprite.play("tail")
 	# Snake only moves when the can_move == true
 	move_timer.timeout.connect(on_timer_out)
 	move_timer.start()
@@ -186,10 +183,7 @@ func zone_check(check_position)-> bool:
 			var random_letter_count : int = randi_range(2, 5)
 			print("Letter count : " + str(random_letter_count))
 			spawn_letters(random_letter_count) # Spawn new letters
-	if in_safe_zone:
-		snake_head.set_value("^^")
-	else:
-		snake_head.set_value("..")
+
 	# Result
 	return in_safe_zone
 
@@ -232,7 +226,6 @@ func dead():
 	print("Snake has died!")
 	snake_head.modulate = Color("Red")
 	snake_tail.modulate = Color("DARK_SALMON")
-	snake_head.set_value("XX")
 	can_move = false
 	move_timer.queue_free()
 	print("Snake length: " + str(snake_segment.size()))

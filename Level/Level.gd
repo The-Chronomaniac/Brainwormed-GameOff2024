@@ -5,8 +5,8 @@ signal letter_spawn(number_of_letters)
 signal current_word(value)
 
 # Where we store where the letters go
-var cell_size : int = 64
-var grid_size : Vector2i = Vector2i(22, 12)
+var cell_size : int = 16
+var grid_size : Vector2i = Vector2i(14, 8)
 var board_position : Vector2 = Vector2.ZERO
 
 # Map data

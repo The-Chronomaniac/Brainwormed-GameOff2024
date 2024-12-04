@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd1jvq4oxls31"]
+[gd_scene load_steps=5 format=3 uid="uid://dd1jvq4oxls31"]
 
 [ext_resource type="PackedScene" uid="uid://cyhukmk261lvj" path="res://Grid/Grid.tscn" id="1_d7qj8"]
 [ext_resource type="PackedScene" uid="uid://bidsxlq5mmpnq" path="res://Counter/Scoreboard/Scoreboard.tscn" id="2_i5jfd"]
+[ext_resource type="Texture2D" uid="uid://bylvrwnqffpgp" path="res://Sprites/level_background.png" id="3_oxhxp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_led2y"]
 content_margin_left = 40.0
@@ -48,3 +49,7 @@ layout_mode = 2
 
 [node name="Scoreboard" parent="." instance=ExtResource("2_i5jfd")]
 layout_mode = 1
+
+[node name="LevelBackground" type="Sprite2D" parent="."]
+texture = ExtResource("3_oxhxp")
+centered = false

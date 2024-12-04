@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bidsxlq5mmpnq"]
+[gd_scene load_steps=7 format=3 uid="uid://bidsxlq5mmpnq"]
 
 [ext_resource type="Script" path="res://Counter/Scoreboard/Scoreboard.gd" id="1_wmomo"]
+[ext_resource type="FontFile" uid="uid://bn7626cbwijcy" path="res://Words/ChevyRay - Bird Seed.ttf" id="2_6n05y"]
 [ext_resource type="PackedScene" uid="uid://1kx027sdxadp" path="res://Counter/Counter.tscn" id="2_eqimj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hxv4"]
@@ -30,8 +31,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 118.84
+offset_right = 118.84
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_wmomo")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -57,9 +61,11 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4ul80")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/HBoxContainer/PanelContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_6n05y")
+theme_override_font_sizes/font_size = 60
 text = "Word"
 horizontal_alignment = 1
 vertical_alignment = 1

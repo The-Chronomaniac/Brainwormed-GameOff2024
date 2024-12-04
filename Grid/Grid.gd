@@ -9,10 +9,10 @@ extends Control
 var player_snake
 var line_list : Array = []
 
-var letter_scene = preload("res://Letter/Letter.tscn")
+@export var letter_scene : PackedScene
 var rng = RandomNumberGenerator.new()
 
-var verify_block : Letter
+var verify_block : Letter2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

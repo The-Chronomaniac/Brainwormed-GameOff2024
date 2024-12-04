@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0ciu782egddw"]
+[gd_scene load_steps=3 format=3 uid="uid://d0ciu782egddw"]
 
 [ext_resource type="Script" path="res://Snake/Snake.gd" id="1_upbrh"]
+[ext_resource type="PackedScene" uid="uid://bplo5fgj7mci7" path="res://Letter/Letter2.tscn" id="2_fgixw"]
 
 [node name="Snake" type="Node2D"]
 top_level = true
 script = ExtResource("1_upbrh")
+letter_scene = ExtResource("2_fgixw")
 
 [node name="DelayTime" type="Timer" parent="."]
 wait_time = 0.15

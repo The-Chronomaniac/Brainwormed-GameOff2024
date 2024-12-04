@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://1kx027sdxadp"]
+[gd_scene load_steps=3 format=3 uid="uid://1kx027sdxadp"]
 
 [ext_resource type="Script" path="res://Counter/Counter.gd" id="1_63o4i"]
+[ext_resource type="FontFile" uid="uid://bfaeql1p14t4v" path="res://Words/ChevyRay - Babyblocks Mono.ttf" id="2_12wrd"]
 
 [node name="Counter" type="PanelContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -9,11 +10,13 @@ offset_bottom = 64.0
 script = ExtResource("1_63o4i")
 
 [node name="Label" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("2_12wrd")
+theme_override_font_sizes/font_size = 61
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

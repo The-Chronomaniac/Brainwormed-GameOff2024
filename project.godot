@@ -24,9 +24,11 @@ Points="*res://Words/Points.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/resizable=false
+window/size/viewport_width=368
+window/size/viewport_height=224
+window/size/window_width_override=1104
+window/size/window_height_override=672
+window/stretch/mode="viewport"
 
 [global_group]
 
@@ -69,6 +71,9 @@ Right={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/decals/filter=0
+textures/light_projectors/filter=0
 environment/defaults/default_clear_color=Color(0.0980184, 0.195387, 0.449086, 1)
