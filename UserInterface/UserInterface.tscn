@@ -49,6 +49,9 @@ layout_mode = 2
 
 [node name="Scoreboard" parent="." instance=ExtResource("2_i5jfd")]
 layout_mode = 1
+offset_left = 0.0
+offset_right = 1104.0
+offset_bottom = -96.0
 
 [node name="LevelBackground" type="Sprite2D" parent="."]
 texture = ExtResource("3_oxhxp")

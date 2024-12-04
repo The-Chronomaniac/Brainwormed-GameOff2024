@@ -3,8 +3,6 @@ extends Node2D
 
 var alphabet : Array = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
-
-
 @onready var block : Node2D = $Block
 
 @onready var segmentsprite : AnimatedSprite2D = $Block/Segment
@@ -39,7 +37,9 @@ func _ready() -> void:
 
 func set_value(letter):
 	value = letter
-	lettersprite.play(letter)
+	# Only process letters and blank values in the animatedSprite player
+	if not alphabet.find(value.to_upper()) == -1 or value == "blank":
+		lettersprite.play(letter)
 
 func _process(delta: float) -> void:
 	pass

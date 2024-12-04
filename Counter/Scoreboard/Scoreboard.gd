@@ -1,13 +1,14 @@
 extends Control
 
-@onready var hbox_container : HBoxContainer = $PanelContainer/CenterContainer/PanelContainer/HBoxContainer
-@onready var counter : PanelContainer = $PanelContainer/CenterContainer/PanelContainer/HBoxContainer/Counter
-@onready var word_label : Label = $PanelContainer/CenterContainer/PanelContainer/HBoxContainer/PanelContainer/Label
+@onready var hbox_container : HBoxContainer = $PanelContainer/HBoxContainer
+@onready var counter : PanelContainer = $PanelContainer/HBoxContainer/Counter
+@onready var word_label : Label = $PanelContainer/HBoxContainer/PanelContainer/Label
 
 var counter_list : Array = []
 
 func _ready() -> void:
-	position.y = 16 # Offset from the top of the screen
+	position.x = Level.board_position.x - 12
+	position.y = 8 # Offset from the top of the screen
 	# Push original counter
 	counter_list.push_back(counter)
 	# Create new counters

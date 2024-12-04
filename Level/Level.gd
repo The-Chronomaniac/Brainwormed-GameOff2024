@@ -7,7 +7,7 @@ signal current_word(value)
 # Where we store where the letters go
 var cell_size : int = 16
 var grid_size : Vector2i = Vector2i(14, 8)
-var board_position : Vector2 = Vector2.ZERO
+var board_position : Vector2 = Vector2(16 * 4, 16 * 3)
 
 # Map data
 var data : Array = []

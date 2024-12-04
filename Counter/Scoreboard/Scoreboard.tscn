@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bidsxlq5mmpnq"]
+[gd_scene load_steps=6 format=3 uid="uid://bidsxlq5mmpnq"]
 
 [ext_resource type="Script" path="res://Counter/Scoreboard/Scoreboard.gd" id="1_wmomo"]
 [ext_resource type="FontFile" uid="uid://bn7626cbwijcy" path="res://Words/ChevyRay - Bird Seed.ttf" id="2_6n05y"]
 [ext_resource type="PackedScene" uid="uid://1kx027sdxadp" path="res://Counter/Counter.tscn" id="2_eqimj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hxv4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4w1j"]
 content_margin_left = 8.0
@@ -39,28 +37,21 @@ scale = Vector2(0.25, 0.25)
 script = ExtResource("1_wmomo")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_3hxv4")
-
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
 layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/CenterContainer"]
-layout_mode = 2
+offset_left = 14.0
+offset_right = 354.0
+offset_bottom = 82.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_q4w1j")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/CenterContainer/PanelContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4ul80")
 
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/HBoxContainer/PanelContainer"]
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/PanelContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 1
@@ -70,5 +61,5 @@ text = "Word"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Counter" parent="PanelContainer/CenterContainer/PanelContainer/HBoxContainer" instance=ExtResource("2_eqimj")]
+[node name="Counter" parent="PanelContainer/HBoxContainer" instance=ExtResource("2_eqimj")]
 layout_mode = 2
