@@ -5,6 +5,7 @@
 
 [node name="Snake" type="Node2D"]
 top_level = true
+z_index = 10
 script = ExtResource("1_upbrh")
 letter_scene = ExtResource("2_fgixw")
 

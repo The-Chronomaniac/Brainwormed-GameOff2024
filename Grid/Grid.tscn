@@ -1,30 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyhukmk261lvj"]
+[gd_scene load_steps=4 format=3 uid="uid://cyhukmk261lvj"]
 
 [ext_resource type="Script" path="res://Grid/Grid.gd" id="1_538ot"]
 [ext_resource type="PackedScene" uid="uid://d0ciu782egddw" path="res://Snake/snake.tscn" id="2_qwt2o"]
 [ext_resource type="PackedScene" uid="uid://bplo5fgj7mci7" path="res://Letter/Letter2.tscn" id="3_14bcl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yuc4"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4grh"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.254902, 0.254902, 0.254902, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4fpo"]
-bg_color = Color(1, 1, 1, 1)
 
 [node name="Grid" type="Control" groups=["Grid"]]
 layout_mode = 3
@@ -34,20 +12,3 @@ size_flags_vertical = 3
 script = ExtResource("1_538ot")
 snake_scene = ExtResource("2_qwt2o")
 letter_scene = ExtResource("3_14bcl")
-
-[node name="BottomPanel" type="Panel" parent="."]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4yuc4")
-
-[node name="SafeZone" type="Panel" parent="."]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_j4grh")
-
-[node name="LetterZone" type="Panel" parent="."]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i4fpo")
-
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 0, 0)
-width = 8.0
-default_color = Color(0.253843, 0.253843, 0.253843, 1)

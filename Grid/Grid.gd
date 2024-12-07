@@ -1,9 +1,5 @@
 extends Control
 
-@onready var letter_panel : Panel = $LetterZone
-@onready var safe_panel : Panel = $SafeZone
-@onready var line : Line2D = $Line2D
-@onready var bottom_panel : Panel = $BottomPanel
 @export var snake_scene : Resource
 
 var player_snake
@@ -16,48 +12,14 @@ var verify_block : Letter2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var skin_color = "Gray"
-	# Create the grid
-	safe_panel.position = Vector2.ZERO
-	safe_panel.size = Level.grid_size * Level.cell_size
-	safe_panel.modulate = Color(skin_color).darkened(0.7)
-	
-	# Create the letter zone
-	letter_panel.size = Vector2((Level.grid_size.x - 2) * Level.cell_size, (Level.grid_size.y - 2) * Level.cell_size)
-	letter_panel.position = Vector2(Level.cell_size, Level.cell_size)
-	letter_panel.modulate = Color(skin_color).darkened(0.5)
-	
-	# Bottom panel
-	bottom_panel.size = safe_panel.size
-	bottom_panel.position = safe_panel.position + Vector2(0, 256)
-	bottom_panel.modulate = Color(skin_color).darkened(0.3)
-	
-	# Position
-	#Level.board_position = letter_panel.global_position
-	line.default_color = Color(skin_color).darkened(0.8)
-	
-	# Draw grid lines
-	for x in range(Level.grid_size.x):
-		if x > 0:
-			var new_line = line.duplicate()
-			new_line.position = safe_panel.position
-			new_line.points = [Vector2(Level.cell_size * x, 0), Vector2(Level.cell_size * x, Level.grid_size.y * Level.cell_size)]
-			add_child(new_line)
-	for y in range(Level.grid_size.y):
-		if y > 0:
-			var new_line = line.duplicate()
-			new_line.position = safe_panel.position
-			new_line.points = [Vector2(0, Level.cell_size * y), Vector2(Level.grid_size.x * Level.cell_size, Level.cell_size * y)]
-			add_child(new_line)
-	
+	# Spawn letters
+	Level.letter_spawn.connect(_spawn_random_letters)
+
 	#Spawn Snake
 	player_snake = snake_scene.instantiate()
 	await get_tree().process_frame
 	get_tree().current_scene.add_child(player_snake)
 	player_snake.initialize_snake()
-	
-	# Spawn letters
-	Level.letter_spawn.connect(_spawn_random_letters)
 	
 	# Spawn verify block
 	_spawn_verify_block()
@@ -77,7 +39,7 @@ func _spawn_verify_block():
 	# Place on map but with no value
 	await get_tree().process_frame
 	get_tree().current_scene.add_child(verify_block)
-	verify_block.global_position = safe_panel.global_position + Vector2(Level.cell_size * x_position, Level.cell_size * y_position) + Vector2(Level.cell_size * 0.5, Level.cell_size * 0.5)
+	verify_block.global_position = Level.board_position + Vector2(Level.cell_size * x_position, Level.cell_size * y_position) + Vector2(Level.cell_size * 0.5, Level.cell_size * 0.5)
 	verify_block.z_index = 1
 	verify_block.remove_from_group("Letter")
 	verify_block.scale = Vector2(1.25, 1.25)
@@ -85,6 +47,12 @@ func _spawn_verify_block():
 	# Change the block when you have enough letters to verify (one letter)
 	Level.current_word.connect(_verify_block_color)
 	_verify_block_color("")
+	# Play animation to prove its still working
+	var tween = get_tree().create_tween()
+	tween.tween_property(verify_block, "position:y", -2, 0.25).as_relative()
+	tween.tween_property(verify_block, "position:y", 2, 0.25).as_relative()
+	tween.set_loops(0)
+	tween.play()
 	# Change scale when you verify
 	Level.scoreboard_update.connect(_verify_block_scale)
 
