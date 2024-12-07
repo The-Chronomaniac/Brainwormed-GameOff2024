@@ -121,10 +121,12 @@ func initialize_snake():
 	var spawn_position : Vector2i = Level.exit_position
 	# Snake head
 	snake_head = spawn_snake(spawn_position.x, spawn_position.y - 1)	
+	snake_head.set_value("blank")
 	snake_head.z_index = 10 # Always on top
 	# Snake tail
 	snake_head.segmentsprite.play("snakehead")
 	snake_tail = spawn_snake(spawn_position.x - 1, spawn_position.y)
+	snake_tail.set_value("blank")
 	snake_tail.segmentsprite.play("tail")
 	# Snake only moves when the can_move == true
 	move_timer.timeout.connect(on_timer_out)

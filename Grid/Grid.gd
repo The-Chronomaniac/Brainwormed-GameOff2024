@@ -41,6 +41,7 @@ func _spawn_verify_block():
 	get_tree().current_scene.add_child(verify_block)
 	verify_block.global_position = Level.board_position + Vector2(Level.cell_size * x_position, Level.cell_size * y_position) + Vector2(Level.cell_size * 0.5, Level.cell_size * 0.5)
 	verify_block.z_index = 1
+	verify_block.set_value("blank")
 	verify_block.remove_from_group("Letter")
 	verify_block.scale = Vector2(1.25, 1.25)
 	verify_block.set_value("@")
