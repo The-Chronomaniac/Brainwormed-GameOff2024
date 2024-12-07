@@ -48,6 +48,8 @@ func move():
 		# Check head
 		var head_segment = snake_segment[0]
 		var head_position = snake_segment_position[0]
+		# Rotate the head
+		head_segment.rotation = move_direction.angle() - deg_to_rad(270)
 		# Set snake speed based on position
 		var movement_speed = fast_speed if zone_check(snake_segment_position[0]) else normal_speed
 		move_timer.wait_time = movement_speed
@@ -102,6 +104,9 @@ func move():
 			move_tween.play()
 			# Move segment to new position in level data
 			Level.data[current_position.y][current_position.x] = current_segment
+			# Snake tail
+			if current_segment == snake_segment[snake_segment.size() - 1]:
+				current_segment.rotation = current_segment.global_position.angle_to_point(board_offset + letter_position + letter_offset) - deg_to_rad(270)
 		
 func inputs():
 		if Input.is_action_just_pressed("Down") and move_direction != up:
