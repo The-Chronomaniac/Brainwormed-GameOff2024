@@ -73,16 +73,16 @@ func _spawn_letter(letter):
 	var x_position : int = randi_range(safe_margin, Level.grid_size.x - 1 - safe_margin)
 	var y_position : int = randi_range(safe_margin, Level.grid_size.y - 1 - safe_margin)
 	# Check if any letters are too close
-	var empty_cell_left : bool = Level.data[y_position][x_position - 1] == null
-	var empty_cell_right : bool = Level.data[y_position][x_position + 1] == null
-	var empty_cell_up : bool = Level.data[y_position - 1][x_position] == null
-	var empty_cell_down : bool = Level.data[y_position + 1][x_position] == null
+	var empty_cell_left = Level.data[y_position][x_position - 1]
+	var empty_cell_right = Level.data[y_position][x_position + 1]
+	var empty_cell_up = Level.data[y_position - 1][x_position]
+	var empty_cell_down = Level.data[y_position + 1][x_position]
 	# If the level space is empty or it is not in the verify exit, spawn the letter
 	if not Level.data[y_position][x_position] == null or x_position == Level.exit_position.x: # Null is empty
 		_spawn_letter(letter) # Try again if not
 		return
 	# Only spawn letters that aren't touching to give the player room to manevur
-	if not empty_cell_down and not empty_cell_up and not empty_cell_right and not empty_cell_left:
+	if not empty_cell_down == null or not empty_cell_up == null or not empty_cell_right == null or not empty_cell_left == null:
 		_spawn_letter(letter) # Try again if not
 		return
 	# Create the letter
